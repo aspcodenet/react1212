@@ -3,16 +3,48 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './components/Header'
+import Footer from './components/Footer'
+import Main from './components/Main'
+
+import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import { Outlet } from "react-router-dom";
+import Contact from './components/Contact'
+
+function Layout() {
+  return (
+      <>
+        <Header />
+        <Outlet />
+        <Footer />
+      </>
+  );
+}
+
+const routerStefan = createBrowserRouter([
+  {
+    element: <Layout/>,
+    errorElement: <div>FEL</div>,    
+    children:[
+        {
+          path:'/',
+          element: <Main/>,
+        },
+        {
+          path:'/contact',
+          element: <Contact/>,
+        }
+    ]
+  }
+])
+
 
 function App() {
 
   return (
-    <>
-    <p>Hej</p>
-      <Header></Header>
-      <h1>Hejhej</h1>
-      <p>Test</p>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas non iste libero nisi. Reiciendis exercitationem nisi, sed, vero maxime quibusdam soluta suscipit obcaecati voluptatum quisquam asperiores? Enim sint ratione tempore?</p>
+  <>
+    <RouterProvider router={routerStefan}>
+
+    </RouterProvider>
     </>
   )
 }

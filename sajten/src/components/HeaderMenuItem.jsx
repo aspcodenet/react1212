@@ -1,7 +1,14 @@
+import { Link, useLocation } from 'react-router-dom';
+
+
 function HeaderMenuItem(props){
     return (
         <>
-        <a href={props.link}><li>{props.text}</li></a>
+        <Link 
+                to={props.link}>
+                { props.text }
+            </Link>
+        {/* <a href={props.link}><li>{props.text}</li></a> */}
         </>
     )
 };
